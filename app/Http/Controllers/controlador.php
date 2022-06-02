@@ -29,34 +29,19 @@ class controlador extends Controller
         $usuario_logiado= auth()->user()->id;
         $Libros = Libro::where('id_users','=', $usuario_logiado)->get();
         $array = ['Libros'=>$Libros];
-        // echo($Libros);     
-        // if ($Libros=0){
-        //         echo("usted no tiene libros");
-        //         return view('mostrar_libro',compact('Libros'));
-                
-        //     }
-        //     else {
-        //             echo('usted si tiene libros' );
-        //             return view('mostrar_libro', compact('Libros'));
-        //         }
-        return view('mostrar_libro', $array );
-        
-        // 
-        
-        
-        
-        // ->where('id', 'like', '%'.$this->userid.'%');
-        
-        // if (empty($libros)){
-        //     echo("usted no tiene libros");
-        //     return view('mostrar_libro', compact('libros'));
-            
-        // }
-        // else {
-        //     echo('usted si tiene libros' );
-        //     return view('mostrar_libro', compact('libros'));
-        // }
-        
+       
+
+        return view('blank', $array);
+    }
+    
+    public function crearlibros(Request $request){
+        $usuario_logiado= auth()->user()->id;
+        $NuevoLibro = new Libro();
+        $NuevoLibro->Titulo = $request->input('Titulo');
+        $NuevoLibro->Libro = $request->input('escrito');
+        $NuevoLibro->id_users = ($usuario_logiado);
+        $NuevoLibro->save();
+        return back()->with('status', 'Post actualizado con éxito');
     }
 
     public function create(){
@@ -89,5 +74,18 @@ class controlador extends Controller
             //     return $respuesta;
             // }
             
+    }
+    public function administrador(){
+        return view('blank');
+    }
+    public function CerrarSesion(){
+        auth()->logout();
+        return redirect(route('inicio'));
+    }
+    public function Editarlib(){
+        echo("editar el libro");
+    }
+    public function eliminarlib(){
+        
     }
 }

@@ -16,8 +16,7 @@ class CreateLibrosTable extends Migration
         Schema::create('libros', function (Blueprint $table) {
             $table->id();
             $table->string('Titulo');
-            $table->string('Libro');
-            
+            $table->string('Libro', 500);
             $table->foreignId('id_users')
             ->nullable()
             ->constrained('users')

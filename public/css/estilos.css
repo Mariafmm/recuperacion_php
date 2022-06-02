@@ -1,0 +1,67 @@
+*{
+    font-variant: small-caps;
+    text-align: center;
+}
+.presentacion{
+    color: #fff;
+    background-color: indianred;
+    margin-left: 25%;
+    border: 2px solid #555; 
+    border-radius: 0 0  100px 100px;
+    width: 50%;
+    height: 70%;
+}
+
+.ini{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.librospre{
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.50);
+    align-items: center;
+    margin: 30px;
+    width: 60%;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+}
+.titulo{
+    width: 200px;
+    /* height: 70%; */
+    margin: 20px 20px;
+/* border-radius: 10px; */
+}
+.creados{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.libroscre{
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.50);
+    align-items: center;
+    margin: 5%;
+    padding: 5%;
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+}
+.titulocre{
+    margin-top: 1%;
+    
+}
+.content{
+    margin-bottom: 30px;
+    height: 500px;
+    overflow: auto;
+    width: auto;
+}
+.botones{
+    margin-left: auto;
+}

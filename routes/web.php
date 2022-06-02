@@ -21,8 +21,12 @@ use App\Http\Controllers\controlador;
 Route::controller(controlador::class)->group(function(){
     Route::get('/', 'Bienvenido')->name('inicio');
     Route::post('/','Login')->name('login');
-    Route::get('/lista/' , 'MostrarLibros')->name('libros');
-    Route::get('/Registro', 'create');
-    Route::post('/Registro', 'Registro')->name('registracion');
+    Route::get('lista' , 'MostrarLibros');
+    Route::post('lista' , 'crearlibros')->name('libros');
+    Route::get('Registro', 'create');
+    Route::post('Registro', 'Registro')->name('registracion');
+    Route::get('cerrar', 'CerrarSesion')->name('cerrarUsu');
+    Route::post('editar', 'Editarlib')->name('edit');
+    Route::post('eliminar', 'eliminarlib')->name('eli');
 });
 

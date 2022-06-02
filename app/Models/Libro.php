@@ -11,4 +11,5 @@ class Libro extends Model
     public function usuarios(){
         return $this -> belongsTo(User::class, 'id_users');
     }
+    public $timestamps = false;
 }

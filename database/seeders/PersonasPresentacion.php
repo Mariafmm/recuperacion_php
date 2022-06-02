@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Farcades\DB;
 
@@ -14,12 +15,12 @@ class PersonasPresentacion extends Seeder
      */
     public function run()
     {
-        //  $PersonasFalsas=[
-        //     'id'=>'1',
-        //     'nombre'=> 'prueba',
-        //     'email'=> 'prueba@gmail.com',
-        //     'password'=> 'prueba1'
-        // ];
-        // DB::table('users')->insert($PersonasFalsas);
+    //      $PersonasFalsas=[
+    //         'id'=>'1',
+    //         'nombre'=> 'prueba',
+    //         'email'=> 'prueba@gmail.com',
+    //         'password'=> 'prueba1'
+    //     ];
+    //     DB::table('users')->insert($PersonasFalsas);
     }
 }
