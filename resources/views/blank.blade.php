@@ -249,13 +249,12 @@
                             <hr><p>{{$Librito->Libro}} </p><hr>
                         </div>
                         <div class="botones">
-                        <form action="{{route('edit')}}" >
+                            
+                            <a class="btn btn-success" href="{{route('edit',$Librito->id)}}" >Editar</a>
+
+                        <form action="{{route('eli',$Librito->id)}}" method="post">
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-success" >Editar</button>
-                        </form>
-                        <form action="{{route('eli')}}">
-                            {{ csrf_field() }}
-                            <button type="submit" name="borrar" id="borrar" class="btn btn-danger">Eliminar</button>
+                            <button type="submit" name="borrar" id="borrar" value="Borrar" class="btn btn-danger">Eliminar</button>
                         </form>
                         </div>
                     </div>

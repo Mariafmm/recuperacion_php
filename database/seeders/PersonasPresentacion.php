@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Farcades\DB;
+use App\Models\User;
 
 class PersonasPresentacion extends Seeder
 {
@@ -15,12 +15,12 @@ class PersonasPresentacion extends Seeder
      */
     public function run()
     {
-    //      $PersonasFalsas=[
-    //         'id'=>'1',
-    //         'nombre'=> 'prueba',
-    //         'email'=> 'prueba@gmail.com',
-    //         'password'=> 'prueba1'
-    //     ];
-    //     DB::table('users')->insert($PersonasFalsas);
+         User::create([
+            'id'=>'1',
+            'nombre'=> 'prueba',
+            'email'=> 'prueba@gmail.com',
+            'password'=> password_hash('prueba1',PASSWORD_DEFAULT)
+        ]);
+        // DB::table('users')->insert($PersonasFalsas);
     }
 }

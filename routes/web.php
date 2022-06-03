@@ -21,12 +21,13 @@ use App\Http\Controllers\controlador;
 Route::controller(controlador::class)->group(function(){
     Route::get('/', 'Bienvenido')->name('inicio');
     Route::post('/','Login')->name('login');
-    Route::get('lista' , 'MostrarLibros');
+    Route::get('lista' , 'MostrarLibros')->name('libreria');
     Route::post('lista' , 'crearlibros')->name('libros');
     Route::get('Registro', 'create');
     Route::post('Registro', 'Registro')->name('registracion');
     Route::get('cerrar', 'CerrarSesion')->name('cerrarUsu');
-    Route::post('editar', 'Editarlib')->name('edit');
-    Route::post('eliminar', 'eliminarlib')->name('eli');
+    Route::get('editar/{Librito}', 'Editarlib')->name('edit');
+    Route::post('actualizar/{Librito}', 'actualizaLib')->name('actu');
+    Route::post('eliminar/{Librito}', 'eliminarlib')->name('eli');
 });
 

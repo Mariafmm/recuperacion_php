@@ -27,10 +27,10 @@ class controlador extends Controller
 
     public function MostrarLibros(){
         $usuario_logiado= auth()->user()->id;
+        
         $Libros = Libro::where('id_users','=', $usuario_logiado)->get();
-        $array = ['Libros'=>$Libros];
        
-
+        $array = ['Libros'=>$Libros];
         return view('blank', $array);
     }
     
@@ -75,17 +75,30 @@ class controlador extends Controller
             // }
             
     }
-    public function administrador(){
-        return view('blank');
-    }
     public function CerrarSesion(){
         auth()->logout();
         return redirect(route('inicio'));
     }
-    public function Editarlib(){
-        echo("editar el libro");
+    public function Editarlib($id){
+        $editar = Libro::find($id);
+        $array=['editar'=>$editar];
+        // compact no me funciona
+        return view ('EditarLibro', $array);
     }
-    public function eliminarlib(){
-        
+
+    public function actualizaLib(Request $request,$id){
+        $usuario_logiado= auth()->user()->id;
+        $NuevoLibro = Libro::find($id);
+        $NuevoLibro->Titulo = $request->input('Titulo');
+        $NuevoLibro->Libro = $request->input('escrito');
+        $NuevoLibro->id_users = ($usuario_logiado);
+        $NuevoLibro->save();
+        return redirect (route('libreria'));
+    }
+
+
+    public function eliminarlib($id){
+        Libro::destroy($id);
+        return redirect('lista');
     }
 }
