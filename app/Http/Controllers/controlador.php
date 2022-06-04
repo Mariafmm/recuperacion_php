@@ -7,9 +7,14 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class controlador extends Controller
 {
+    public function paginaprin(){
+        return view('principal');
+    }
+
     public function Bienvenido(){
         return view('index');
     }
@@ -18,6 +23,7 @@ class controlador extends Controller
         if (auth()->attempt(['email'=>$request['email'], 'password'=>$request['contra']])) {
             return redirect( route('libros'));
         }
+        
         else {
             return back()->withErrors([
                 'message'=>'El email o la contraseña son incorrectos, por favor intentelo de nuevo',
@@ -29,7 +35,7 @@ class controlador extends Controller
         $usuario_logiado= auth()->user()->id;
         
         $Libros = Libro::where('id_users','=', $usuario_logiado)->get();
-       
+        
         $array = ['Libros'=>$Libros];
         return view('blank', $array);
     }
@@ -49,13 +55,25 @@ class controlador extends Controller
     }
 
     public function Registro(Request $request){
+        $request->validate([
+            'nombre'=>'required | min:5 | alpha',
+            'email'=>'required | email',
+            'contra'=>'required | min:5',
+        ],
+        [
+            'required'=>'El campo es requerido',
+            'min'=>'Se requiere al minimo 5 caracteres',
+            'nombre.alpha'=> 'No se permiten caracteres especiales, solo letras',
+            // 'email.unique'=>'Correo ya registrado',
+            'email'=>'Correo no valido',
+        ]);
         $usuario = new User();
         $usuario->nombre=$request->input('nombre');
         $usuario->email=$request->input('email');
         $usuario->password=Hash::make($request['contra']);
         $usuario->save();
-        echo("registrado correctamente");
-        return redirect (route('inicio'));
+        return redirect( route('inicio'));
+        return back()->with('success', '¡validacion exitosa!');
                 
     //     if ($_request->isMethod('post')){
     //         $formulario = $_request->post();

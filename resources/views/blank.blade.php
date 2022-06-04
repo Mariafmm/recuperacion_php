@@ -45,7 +45,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    {{-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -56,7 +56,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -216,10 +216,10 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <button><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                                <button class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cerrar Sesión
-                                </a></button>
+                                </button>
                             </div>
                         </li>
 
@@ -236,31 +236,31 @@
                     <div class="titulocre">
                     <h1>Tus escritos</h1><hr>
                     </div>
-                @foreach ($Libros as $Librito)
+                    
+                    @foreach ($Libros as $Librito)
                 <div class="creados">
                     <div class="libroscre">
                         <div class="titulocre">
                             <h1>{{$Librito->Titulo}}</h1><br>
                         </div>
-                        <div class="titulolibro">
-                            
-                        </div>
                         <div class="content">
                             <hr><p>{{$Librito->Libro}} </p><hr>
                         </div>
                         <div class="botones">
-                            
                             <a class="btn btn-success" href="{{route('edit',$Librito->id)}}" >Editar</a>
-
-                        <form action="{{route('eli',$Librito->id)}}" method="post">
-                            {{ csrf_field() }}
-                            <button type="submit" name="borrar" id="borrar" value="Borrar" class="btn btn-danger">Eliminar</button>
-                        </form>
+                            
+                            <form action="{{route('eli',$Librito->id)}}" id="eliminar" method="post">
+                                {{ csrf_field() }}
+                                <button type="submit" name="borrar" id="borrar" value="Borrar" class="btn btn-danger" onclick="return confirm('¿Estas seguro?')" >Eliminar</button>
+                            </form>
                         </div>
                     </div>
                 </div>
                     <hr>
                 @endforeach
+
+                     
+                
                 <form id="FormCreaLibros" action="{{route ('libros') }}" method="post">
                     {{ csrf_field() }}
                     <div class="ini">
@@ -322,9 +322,31 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="{{route('cerrarUsu')}}">Aceptar</a>
                 </div>
+                </div>
             </div>
         </div>
     </div>
+    <!-- borrar Modal-->
+    {{-- <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¿Estas seguro de Borrar?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <form action="{{route('eli', $Libros->id)}}" method="post">
+                        {{ csrf_field() }}
+                        <button type="submit" name="borrar" id="borrar" value="Borrar" class="btn btn-danger">Eliminar</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div> --}}
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -335,6 +357,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    
 
 </body>
 
