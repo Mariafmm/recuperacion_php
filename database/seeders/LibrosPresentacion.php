@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Libro;
+use Database\Factories\LIbrosPresentacionFactory;
 
 class LibrosPresentacion extends Seeder
 {
@@ -30,6 +31,6 @@ class LibrosPresentacion extends Seeder
             ]);
     
         
-    //     DB::table('libros')->insert($LibrosFalsos);
+            Libro::factory()->count(5)->create();
     }
 }

@@ -239,15 +239,16 @@
                     
                     @foreach ($Libros as $Librito)
                 <div class="creados">
+                    {{-- Contenedor De libros --}}
                     <div class="libroscre">
                         <div class="titulocre">
                             <h1>{{$Librito->Titulo}}</h1><br>
                         </div>
-                        <div class="content">
-                            <hr><p>{{$Librito->Libro}} </p><hr>
+                        <div class="content"><p>{{$Librito->Libro}} </p>
                         </div>
+                        {{-- quite los hr y añadi algunos estilos kwais :3 --}}
                         <div class="botones">
-                            <a class="btn btn-success" href="{{route('edit',$Librito->id)}}" >Editar</a>
+                            <a class="btn btn-success" style="height:38px!important; width:80px;margin-right: 20px" href="{{route('edit',$Librito->id)}}" >Editar</a>
                             
                             <form action="{{route('eli',$Librito->id)}}" id="eliminar" method="post">
                                 {{ csrf_field() }}
